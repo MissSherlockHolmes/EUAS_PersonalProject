@@ -1,32 +1,33 @@
 package com.MissSherlockHolmes.Farmers.Market.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-@Entity
+@Getter
+@Table("product")  // Specifies the database table
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // Getters and setters
+    @Id  // Marks 'id' as the primary key
     private Long id;
 
-    @Column(nullable = false)
+    @Column("name")  // Specifies the column name if different from field name
     private String name;
 
-    @Column(nullable = false)
+    @Column("price")
     private Double price;
 
-    private String category;//Fruits, Vegetables...
+    private String category;  // Fruits, Vegetables, etc., column name defaults to field name
 
-    @Column(length = 2000)
+    @Column("description")
     private String description;
 
     // Default constructor
     public Product() {
     }
-    
+
+    // Constructor with all fields
     public Product(String name, Double price, String category, String description) {
         this.name = name;
         this.price = price;
@@ -34,28 +35,6 @@ public class Product {
         this.description = description;
     }
 
-    // Getters
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    // Setters
     public void setId(Long id) {
         this.id = id;
     }
