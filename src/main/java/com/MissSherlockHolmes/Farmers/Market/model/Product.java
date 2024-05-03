@@ -1,57 +1,52 @@
 package com.MissSherlockHolmes.Farmers.Market.model;
-
+//Step 2 defines how the products are put into the database sheet
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Getter
-@Table("product")  // Specifies the database table
-public class Product {
-    // Getters and setters
-    @Id  // Marks 'id' as the primary key
-    private Long id;
+    @Getter
+    @Setter
+    @Table("product")  // Specifies the database table
+    public class Product {
+        // Getters and setters
+        @Id  // Marks 'id' as the primary key
+        private Long id;
 
-    @Column("name")  // Specifies the column name if different from field name
-    private String name;
+        @Column("name")  // Specifies the column name if different from field name
+        private String name;
 
-    @Column("price")
-    private Double price;
+        @Column("price")
+        private Double price;
 
-    private String category;  // Fruits, Vegetables, etc., column name defaults to field name
+        @Column("category")
+        private String category;  // Fruits, Vegetables, etc., column name defaults to field name
 
-    @Column("description")
-    private String description;
+        @Column("description")
+        private String description;
 
-    // Default constructor
-    public Product() {
+        @Getter
+        @Column("max_quantity")
+        private Integer maxQuantity;
+
+        @Getter
+        @Column("remaining_quantity")
+        private Integer remainingQuantity;
+
+        // Default constructor
+        public Product() {
+        }
+
+        // Constructor with all fields
+        public Product(String name, Double price, String category, String description, Integer maxQuantity, Integer remainingQuantity) {
+            this.name = name;
+            this.price = price;
+            this.category = category;
+            this.description = description;
+            this.maxQuantity = maxQuantity;
+            this.remainingQuantity = remainingQuantity;
+        }
+
     }
 
-    // Constructor with all fields
-    public Product(String name, Double price, String category, String description) {
-        this.name = name;
-        this.price = price;
-        this.category = category;
-        this.description = description;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-}

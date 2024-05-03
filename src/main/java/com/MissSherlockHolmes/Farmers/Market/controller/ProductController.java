@@ -23,11 +23,11 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public List<Product> getAllProducts() {
-        return productService.getAll();
+    public Iterable<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
-    @PostMapping("/products")
+    @PostMapping("/products") //Step 1 Allows to create product into the database
     public ResponseEntity<?> createProduct(@RequestBody Product product) {
         try {
             Product savedProduct = productService.create(product);

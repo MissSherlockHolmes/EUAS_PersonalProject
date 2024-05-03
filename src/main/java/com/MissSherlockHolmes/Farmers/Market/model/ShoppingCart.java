@@ -1,68 +1,28 @@
-//package com.MissSherlockHolmes.Farmers.Market.model;
-//
-//import javax.persistence.*;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//@Entity
-//public class ShoppingCart {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
-//
-//    @ManyToOne
-//    private User user; // Link to the User entity
-//
-//    @ManyToMany
-//    @JoinTable(
-//            name = "shopping_cart_products",
-//            joinColumns = @JoinColumn(name = "shopping_cart_id"),
-//            inverseJoinColumns = @JoinColumn(name = "product_id")
-//    )
-//    private List<Product> products = new ArrayList<>();
-//
-//    public ShoppingCart() {
-//        // JPA only
-//    }
-//
-//    public ShoppingCart(User user) {
-//        this.user = user;
-//    }
-//
-//    // Getters and Setters
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-//
-//    public List<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(List<Product> products) {
-//        this.products = products;
-//    }
-//
-//    // Utility method to add a product to the cart
-//    public void addProduct(Product product) {
-//        this.products.add(product);
-//    }
-//
-//    // Utility method to remove a product from the cart
-//    public void removeProduct(Product product) {
-//        this.products.remove(product);
-//    }
-//}
+package com.MissSherlockHolmes.Farmers.Market.model;
+
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Data  // Generates getters, setters, equals, hashCode, and toString methods.
+public class ShoppingCart {
+    private Long id;
+    private Long userId; // Matches 'user_id' with a foreign key to 'user(id)'
+    private LocalDateTime createdAt; // Maps to 'created_at'
+    private LocalDateTime updatedAt; // Maps to 'updated_at'
+    private Long productId; // Matches 'product_id' with a foreign key to 'product(id)'
+    private Integer quantity;
+    private Long orderId; // Assuming this also references an Order table
+    private Long bookingId; // Optional reference, possibly to a Booking table
+    private String status;
+    private LocalDateTime orderedAt; // Maps to 'ordered_at'
+    private LocalDateTime bookedAt; // Maps to 'booked_at'
+    private Integer maxQuantity; // Maps to 'max_quantity'
+    private Integer remainingQuantity; // Maps to 'remaining_quantity'
+
+    // Constructor without args for creating instances without initial data.
+    public ShoppingCart() {
+    }
+
+    // Additional constructors and methods as necessary.
+}

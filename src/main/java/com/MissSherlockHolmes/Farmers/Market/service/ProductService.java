@@ -4,18 +4,18 @@ import com.MissSherlockHolmes.Farmers.Market.model.Product;
 import com.MissSherlockHolmes.Farmers.Market.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
+
     private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
-    public List<Product> getAll() {
+    @Transactional(readOnly = true)
+    public Iterable<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
