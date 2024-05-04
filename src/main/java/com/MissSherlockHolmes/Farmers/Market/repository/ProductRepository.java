@@ -11,4 +11,10 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     // Finds all products by category, returns them as a List
     List<Product> findByCategory(String category);
+
+    // Find product by name
+    Product findByName(String name);
+
+    // Custom query to search products by name containing the provided search term
+    List<Product> findByNameContainingIgnoreCase(String name);
 }

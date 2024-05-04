@@ -4,12 +4,11 @@ import com.MissSherlockHolmes.Farmers.Market.model.Product;
 import com.MissSherlockHolmes.Farmers.Market.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +26,7 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @PostMapping("/products") //Step 1 Allows to create product into the database
+    @PostMapping("/products")
     public ResponseEntity<?> createProduct(@RequestBody Product product) {
         try {
             Product savedProduct = productService.create(product);
@@ -37,7 +36,19 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/products/search")
+    public ResponseEntity<List<Product>> searchProductsByName(@RequestParam("name") String name) {
+        List<Product> products = productService.searchProductsByName(name);
+        return ResponseEntity.ok(products);
+    }
+
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
+        try {
+            productService.deleteProduct(id);
+            return new ResponseEntity<>("Product deleted successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
-
-
-

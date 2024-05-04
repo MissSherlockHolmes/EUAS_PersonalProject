@@ -22,4 +22,12 @@ public class ProductService {
     public Product create(Product product) {
         return productRepository.save(product);
     }
+
+    public List<Product> searchProductsByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+    }
 }

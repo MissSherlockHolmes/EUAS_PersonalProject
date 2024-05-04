@@ -1,0 +1,46 @@
+/* App.css */
+.app-container {
+  text-align: center;
+}
+
+.market-title {
+  font-size: 2.5rem;
+  color: #1E8449;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.title-char {
+  display: inline-block; /* Makes transform applicable */
+  transition: transform 0.3s ease; /* Smooth transformation */
+}
+
+.vegetables-img {
+  width: 100%;
+  display: block;
+}
+
+.sections-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+.section button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.section button:hover {
+  background-color: #45a049;
+}
+
