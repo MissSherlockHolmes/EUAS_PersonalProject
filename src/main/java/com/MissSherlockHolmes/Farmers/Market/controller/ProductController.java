@@ -2,15 +2,11 @@ package com.MissSherlockHolmes.Farmers.Market.controller;
 
 import com.MissSherlockHolmes.Farmers.Market.model.Product;
 import com.MissSherlockHolmes.Farmers.Market.service.ProductService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -51,4 +47,18 @@ public class ProductController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> testEndpoint() {
+        return ResponseEntity.ok("Endpoint is working!");
+    }
+
+    @PutMapping("/products/{id}")
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
+        return productService.updateProduct(id, productDetails);
+    }
 }
+
+
+
+

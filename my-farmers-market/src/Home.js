@@ -14,8 +14,8 @@ function Home() {
         </div>
         <div className="section">
           <h2>For Shoppers</h2>
-          <button>Sign Up</button>
-          <button>Login</button>
+          <Link to="/sign-up"><button>Sign Up</button></Link>
+          <Link to="/login"><button>Login</button></Link>
         </div>
       </div>
     </>

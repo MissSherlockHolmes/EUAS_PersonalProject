@@ -44,3 +44,61 @@
   background-color: #45a049;
 }
 
+/* General styles for forms */
+.form-container {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    justify-content: space-around; /* Distribute space around items */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f4f4; /* Light background for the form */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    width: 100%; /* Take full width of the container */
+    max-width: 1200px; /* Set a maximum width if necessary */
+}
+
+.form-header {
+  color: #2a5d34; /* Dark green color matching the Farmers Market theme */
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.form-button {
+  background-color: #4CAF50; /* Green color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.form-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Layout for multiple sections within a form */
+.form-section {
+    flex: 1; /* Flex grow to take available space */
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+

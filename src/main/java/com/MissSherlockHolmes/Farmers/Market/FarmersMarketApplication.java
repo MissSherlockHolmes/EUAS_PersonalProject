@@ -2,11 +2,9 @@ package com.MissSherlockHolmes.Farmers.Market;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
-@SpringBootApplication
-@EnableJdbcRepositories({"com.MissSherlockHolmes.Farmers.Market.repository", "com.MissSherlockHolmes.Farmers.Market.service"})
-
+@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class FarmersMarketApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FarmersMarketApplication.class, args);
