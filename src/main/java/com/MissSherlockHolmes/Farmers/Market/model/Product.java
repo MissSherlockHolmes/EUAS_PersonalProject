@@ -1,5 +1,5 @@
 package com.MissSherlockHolmes.Farmers.Market.model;
-//Step 2 defines how the products are put into the database sheet
+
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;

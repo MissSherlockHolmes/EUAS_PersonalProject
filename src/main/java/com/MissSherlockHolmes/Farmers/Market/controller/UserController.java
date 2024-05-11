@@ -1,5 +1,7 @@
 package com.MissSherlockHolmes.Farmers.Market.controller;
 
+import com.MissSherlockHolmes.Farmers.Market.dto.LoginDto;
+import com.MissSherlockHolmes.Farmers.Market.dto.UserResponseDto;
 import com.MissSherlockHolmes.Farmers.Market.model.User;
 import com.MissSherlockHolmes.Farmers.Market.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ public class UserController {
 
     private final UserService userService;
 
+    // Constructor injection to get an instance of UserService
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -21,7 +24,7 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
-        return new ResponseEntity<>(users, HttpStatus.OK);
+        return ResponseEntity.ok(users);
     }
 
     @GetMapping("/{userId}")
@@ -53,4 +56,16 @@ public class UserController {
         User newUser = userService.createUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
+        UserResponseDto userDto = userService.validateLogin(loginDto.getUsername(), loginDto.getPassword());
+        if (userDto != null) {
+            return ResponseEntity.ok(userDto);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed: Invalid username or password");
+        }
+    }
+
+
 }

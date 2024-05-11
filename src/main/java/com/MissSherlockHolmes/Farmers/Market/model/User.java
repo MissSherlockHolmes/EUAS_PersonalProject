@@ -1,21 +1,51 @@
 package com.MissSherlockHolmes.Farmers.Market.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data  // Lombok annotation to generate getters, setters, equals, hashCode and toString methods
-@NoArgsConstructor // Generates a no-arg constructor
+@Getter
+@Setter
+@Table("user")  // Map to the user table in your database
 public class User {
+    @Id
     private Long id;
-    private String password;
-    private String firstName;
-    private String surname;
-    private String email;
+
+    @Column("username")  // Explicitly specifying the column name
     private String username;
+
+    @Column("password")
+    private String password;
+
+    @Column("firstName")
+    private String firstName;
+
+    @Column("surname")
+    private String surname;
+
+    @Column("email")
+    private String email;
+
+    @Column("street")
     private String street;
-    private String houseNumber;
+
+    @Column("house_number")
+    private String house_numb;
+
+    @Column("city")
     private String city;
+
+    @Column("region")
     private String region;
+
+    @Column("country")
     private String country;
-    private String postalCode;
+
+    @Column("postal_code")
+    private String postal_code;
+
+    public User() {  // No-arg constructor, if required
+    }
 }

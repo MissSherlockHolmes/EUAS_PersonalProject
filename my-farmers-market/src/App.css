@@ -102,3 +102,40 @@
     background-color: #fff;
 }
 
+/* App.css */
+/* ... existing styles remain unchanged ... */
+
+.form-container {
+    display: flex;
+    flex-direction: row; /* Ensures items are laid out in a row */
+    align-items: flex-start; /* Align items to the start of the cross axis */
+    justify-content: center; /* Center items in the main axis */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    width: 100%; /* Full width to allow flex child management */
+    max-width: 960px; /* Adjust based on your overall design */
+}
+
+.form-section {
+    flex: 1; /* Each section will grow to fill the space */
+    margin: 10px; /* Separates the sections slightly */
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    min-width: 300px; /* Ensures sections do not become too narrow */
+}
+
+/* Adjustments for specific section alignments or additional styling can go here */
+.required,
+.optional {
+    width: 48%; /* Controls the width to slightly less than half to fit side-by-side */
+}
+
+/* Ensure inputs do not exceed the form section width */
+.form-input, .form-textarea {
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
